@@ -13,6 +13,7 @@ interface TasksContextValue {
   updateTask: (id: string, patch: Partial<Task>) => void;
   deleteTask: (id: string) => void;
   undoDelete: () => void;
+  clearLastDeleted: () => void; // BUG FIX 2: Add clearLastDeleted method
 }
 
 const TasksContext = createContext<TasksContextValue | undefined>(undefined);
@@ -27,5 +28,3 @@ export function useTasksContext(): TasksContextValue {
   if (!ctx) throw new Error('useTasksContext must be used within TasksProvider');
   return ctx as TasksContextValue;
 }
-
-
